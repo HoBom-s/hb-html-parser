@@ -2,13 +2,13 @@
   "compilerOptions": {
     "strict": true,
     "target": "es6",
-    "module": "commonjs",
+    "module": "es6",
     "rootDir": "src",
     "outDir": "build",
     "sourceMap": true,
-    "resolveJsonModule": true,
     "lib": ["es6", "dom"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]

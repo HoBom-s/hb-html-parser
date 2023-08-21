@@ -16,9 +16,6 @@
     "url": "https://github.com/HoBom-s/hb-html-parser/issues"
   },
   "homepage": "https://github.com/HoBom-s/hb-html-parser#readme",
-  "dependencies": {
-    "jsdom": "^22.1.0"
-  },
   "devDependencies": {
     "@types/jsdom": "^21.1.1",
     "@types/node": "^20.5.1",

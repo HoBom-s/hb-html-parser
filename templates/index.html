@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Template</title>
+    <script type="module" src="../src/index.js"></script>
+  </head>
+  <body>
+    <div class="root"></div>
+    <div id="hello" data-templateId="hello"></div>
+
+    <script type="module">
+      console.log($("#hello").getAttribute("data-templateId"));
+      console.log($.attr("#hello", "data-temp", "1"));
+      console.log($("#hello"));
+    </script>
+  </body>
+</html>

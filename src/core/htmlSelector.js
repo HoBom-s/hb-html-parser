@@ -7,6 +7,7 @@ class HTMLSelector {
   constructor(q) {
     const selected = document.querySelectorAll(q);
 
+    // HTMLElement
     this.selector =
       selected.length > 1
         ? document.querySelectorAll(q)

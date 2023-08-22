@@ -2,26 +2,41 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+
     <title>Template</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
     <script type="module" src="../src/index.js"></script>
   </head>
   <body>
     <div class="root"></div>
-    <div id="hb-container">
-      <div data-template="1">
-        <div class="temp"></div>
-      </div>
-      <div data-template="2">
-        <div class="temp"></div>
-      </div>
-    </div>
+    <button class="temp-btn">button</button>
 
     <script type="module">
-      $("#hb-container")
-        .querySelectorAll("[data-template]")
-        .forEach((el) => {
-          console.log(el);
-        });
+      $.transport("https://fakestoreapi.com/products", {
+        methods: "GET",
+        success: function (data) {
+          const elem = $.create("div");
+          data.forEach((v) => {
+            const elem = $.create("div");
+            $.createElementFromString(elem, `<span>${v.title}</span>`);
+            $(".root").append(elem);
+          });
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+
+      $(".temp-btn").on("click", () => {
+        alert("hi");
+      });
     </script>
   </body>
 </html>

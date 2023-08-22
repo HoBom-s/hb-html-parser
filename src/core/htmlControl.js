@@ -1,5 +1,9 @@
 import { HTMLSelector } from "./htmlSelector.js";
 
+/**
+ * HTML Contoller 정의
+ *    HTML의 attribute 접근 등등..
+ */
 const HTMLControl = {};
 
 {

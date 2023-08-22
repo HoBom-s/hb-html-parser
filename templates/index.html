@@ -7,12 +7,21 @@
   </head>
   <body>
     <div class="root"></div>
-    <div id="hello" data-templateId="hello"></div>
+    <div id="hb-container">
+      <div data-template="1">
+        <div class="temp"></div>
+      </div>
+      <div data-template="2">
+        <div class="temp"></div>
+      </div>
+    </div>
 
     <script type="module">
-      console.log($("#hello").getAttribute("data-templateId"));
-      console.log($.attr("#hello", "data-temp", "1"));
-      console.log($("#hello"));
+      $("#hb-container")
+        .querySelectorAll("[data-template]")
+        .forEach((el) => {
+          console.log(el);
+        });
     </script>
   </body>
 </html>

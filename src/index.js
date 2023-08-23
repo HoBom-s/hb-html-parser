@@ -1,5 +1,6 @@
 import { HTMLSelector } from "./core/htmlSelector.js";
 import { HTMLControl } from "./core/htmlControl.js";
+import { funcs } from "./utils/funcs.js";
 
 {
   /**
@@ -29,13 +30,24 @@ import { HTMLControl } from "./core/htmlControl.js";
   };
 }
 
-window.$ = function (q) {
-  return new HTMLSelector(q).selector;
-};
+{
+  /**
+   * Selector 정의
+   *      $("") < 이렇게 사용
+   */
+  window.$ = function (q) {
+    return new HTMLSelector(q).selector;
+  };
+}
 
 {
+  /**
+   * 각종 Util 정의
+   */
+
   window.$.attr = HTMLControl.attr;
   window.$.create = HTMLControl.create;
   window.$.createElementFromString = HTMLControl.createElementFromString;
   window.$.transport = HTMLControl.tranport;
+  window.$.utils = funcs;
 }

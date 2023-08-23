@@ -38,7 +38,15 @@
       $(".temp-btn").on("click", () => {
         alert("hi");
       });
+
       console.log($.attr("#tempBtn", "data-button"));
+
+      $.utils.each([1, 2, 3, 4], (item, idx) => console.log(item, idx));
+      const obj = {
+        A: "a",
+        B: "b",
+      };
+      $.utils.each(obj, (key, value) => console.log(key, value));
     </script>
   </body>
 </html>

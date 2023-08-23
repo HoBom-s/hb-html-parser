@@ -17,6 +17,7 @@
   <body>
     <div class="root"></div>
     <button class="temp-btn">button</button>
+    <button id="tempBtn" data-button="iambutton">button</button>
 
     <script type="module">
       $.transport("https://fakestoreapi.com/products", {
@@ -37,6 +38,7 @@
       $(".temp-btn").on("click", () => {
         alert("hi");
       });
+      console.log($.attr("#tempBtn", "data-button"));
     </script>
   </body>
 </html>

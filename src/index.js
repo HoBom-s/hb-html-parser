@@ -34,7 +34,7 @@ window.$ = function (q) {
 };
 
 {
-  window.$.attr = HTMLControl.tranport;
+  window.$.attr = HTMLControl.attr;
   window.$.create = HTMLControl.create;
   window.$.createElementFromString = HTMLControl.createElementFromString;
   window.$.transport = HTMLControl.tranport;

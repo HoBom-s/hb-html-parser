@@ -77,6 +77,44 @@ const funcs = {
       }
     }
   },
+
+  /**
+   * Object, Array 구분 없이 For Loop 돌린 이후
+   * 원본의 길이와 똑같은 [Array] 반환
+   *        1) Array인 경우, Callback함수의 파라미터로 Item, Index 전달
+   *        2) Object인 경우, Callback함수의 파라미터로 Key, Value 전달
+   *
+   * @param {Object | Array} t
+   * @param {Function} cb
+   * @returns {Array}
+   */
+  map: function (t, cb) {
+    if (this.isArray(t)) {
+      /**
+       * Array인 경우,,,
+       */
+      const resultArr = [];
+
+      t.forEach((v, i) => {
+        const result = cb(v, i);
+
+        resultArr.push(result);
+      });
+
+      return resultArr;
+    } else if (this.isObject(t)) {
+      /**
+       * Object인 경우,,,
+       */
+      const resultArr = [];
+
+      for (const [k, v] of Object.entries(t)) {
+        const result = cb(k, v);
+
+        return resultArr.push(result);
+      }
+    }
+  },
 };
 
 Object.freeze(funcs);

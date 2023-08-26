@@ -60,3 +60,21 @@ $.transport("https://fakestoreapi.com/products", {
   },
 });
 ```
+
+4. Function Util
+
+Data type이 Object, Array상관 없이 for 반복문 지원.
+
+```javascript
+// Like _.each, _.map ...
+
+// Array
+$.utils.each([1, 2, 3, 4], (item, idx) => console.log(item, idx));
+
+// Object
+const obj = {
+  A: "a",
+  B: "b",
+};
+$.utils.each(obj, (key, value) => console.log(key, value));
+```

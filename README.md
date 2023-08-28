@@ -16,7 +16,7 @@
 
 <br />
 
-1. HTMLElement Selector
+### 1. HTMLElement Selector
 
 ```javascript
 <div class="temp"></div>
@@ -26,7 +26,7 @@ $(".temp");
 $("#temp2");
 ```
 
-2. HTMLElement Event Binding
+### 2. HTMLElement Event Binding
 
 ```javascript
 <button class="temp-btn">button</button>;
@@ -36,7 +36,7 @@ $(".temp-btn").on("click", () => {
 });
 ```
 
-3. API 통신
+### 3. API 통신
 
 jQuery의 **ajax**처럼 구현 했음. 그러나 기존의 jQuery의 경우 굳이 사용하지 않는 불필요한 Option이 너무 많았기 때문에 필요한 것만 경량화 하여 구현.
 
@@ -61,7 +61,7 @@ $.transport("https://fakestoreapi.com/products", {
 });
 ```
 
-4. Function Util
+### 4. Function Util
 
 Data type이 Object, Array상관 없이 for 반복문 지원.
 

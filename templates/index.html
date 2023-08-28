@@ -35,6 +35,19 @@
         },
       });
 
+      $.transport("https://reqres.in/api/users?page=2", {
+        methods: "GET",
+        success: function (result) {
+          const { data } = result;
+          data.forEach((v) => {
+            const elem = $.create("div");
+
+            $.createElementFromString(elem, `<img src=${v.avatar} />`);
+            $(".root").append(elem);
+          });
+        },
+      });
+
       $(".temp-btn").on("click", () => {
         alert("hi");
       });

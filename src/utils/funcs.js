@@ -111,8 +111,30 @@ const funcs = {
       for (const [k, v] of Object.entries(t)) {
         const result = cb(k, v);
 
-        return resultArr.push(result);
+        resultArr.push(result);
       }
+
+      return resultArr;
+    }
+  },
+
+  /**
+   * Object, Array 구분 없이 길이 값 출력
+   *
+   * @param {Array | Object} t
+   * @returns {number}
+   */
+  length: function (t) {
+    if (this.isArray(t)) {
+      /**
+       * Array 라면,,,
+       */
+      return t.length;
+    } else if (this.isObject(t)) {
+      /**
+       * Object 라면,,,
+       */
+      return Object.keys(t).length;
     }
   },
 };

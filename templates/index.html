@@ -19,47 +19,90 @@
     <button class="temp-btn">button</button>
     <button id="tempBtn" data-button="iambutton">button</button>
 
+    <!-- For V2 Test -->
+    <div id="root">
+      <div data-template="TEMPLATE" data-template-name="TEMPLATE-01">
+        <form id="form-group" data-group="GROUP" data-template-name="GROUP-01">
+          <div data-list="LIST" data-template-name="LIST-01">
+            <input
+              type="text"
+              name="username"
+              data-item="ITEM"
+              data-template-name="ITEM-01"
+            />
+            <input
+              type="password"
+              name="password"
+              data-item="ITEM"
+              data-template-name="ITEM-01"
+            />
+          </div>
+        </form>
+      </div>
+      <div data-template="TEMPLATE" data-template-name="TEMPLATE-02">
+        <form id="form-group2" data-group="GROUP" data-template-name="GROUP-02">
+          <div data-list="LIST" data-template-name="LIST-02">
+            <input
+              type="text"
+              name="username"
+              data-item="ITEM"
+              data-template-name="ITEM-02"
+            />
+            <input
+              type="password"
+              name="password"
+              data-item="ITEM"
+              data-template-name="ITEM-02"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- @@@@ V2 @@@@ -->
+
     <script type="module">
-      $.transport("https://fakestoreapi.com/products", {
-        methods: "GET",
-        success: function (data) {
-          const elem = $.create("div");
-          data.forEach((v) => {
-            const elem = $.create("div");
-            $.createElementFromString(elem, `<span>${v.title}</span>`);
-            $(".root").append(elem);
-          });
-        },
-        error: function (error) {
-          console.log(error);
-        },
-      });
+      // $.transport("https://fakestoreapi.com/products", {
+      //   methods: "GET",
+      //   success: function (data) {
+      //     const elem = $.create("div");
+      //     data.forEach((v) => {
+      //       const elem = $.create("div");
+      //       $.createElementFromString(elem, `<span>${v.title}</span>`);
+      //       $(".root").append(elem);
+      //     });
+      //   },
+      //   error: function (error) {
+      //     console.log(error);
+      //   },
+      // });
 
-      $.transport("https://reqres.in/api/users?page=2", {
-        methods: "GET",
-        success: function (result) {
-          const { data } = result;
-          data.forEach((v) => {
-            const elem = $.create("div");
+      // $.transport("https://reqres.in/api/users?page=2", {
+      //   methods: "GET",
+      //   success: function (result) {
+      //     const { data } = result;
+      //     data.forEach((v) => {
+      //       const elem = $.create("div");
 
-            $.createElementFromString(elem, `<img src=${v.avatar} />`);
-            $(".root").append(elem);
-          });
-        },
-      });
+      //       $.createElementFromString(elem, `<img src=${v.avatar} />`);
+      //       $(".root").append(elem);
+      //     });
+      //   },
+      // });
 
-      $(".temp-btn").on("click", () => {
-        alert("hi");
-      });
+      // $(".temp-btn").on("click", () => {
+      //   alert("hi");
+      // });
 
-      console.log($.attr("#tempBtn", "data-button"));
+      // console.log($.attr("#tempBtn", "data-button"));
 
-      $.utils.each([1, 2, 3, 4], (item, idx) => console.log(item, idx));
-      const obj = {
-        A: "a",
-        B: "b",
-      };
-      $.utils.each(obj, (key, value) => console.log(key, value));
+      // $.utils.each([1, 2, 3, 4], (item, idx) => console.log(item, idx));
+      // const obj = {
+      //   A: "a",
+      //   B: "b",
+      // };
+      // $.utils.each(obj, (key, value) => console.log(key, value));
+
+      console.log($.v2());
     </script>
   </body>
 </html>

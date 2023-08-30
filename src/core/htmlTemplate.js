@@ -17,6 +17,7 @@ export class HTMLTemplate {
     // data-template-name="TEMPLATE-01"
     this.templateName = templateName;
 
+    // HTML Node Element
     this.node = elem;
 
     // ====== TEMPLATE의 하위 GROUP들 ======

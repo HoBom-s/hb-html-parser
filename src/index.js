@@ -1,6 +1,7 @@
 import { HTMLSelector } from "./core/htmlSelector.js";
 import { HTMLControl } from "./core/htmlControl.js";
 import { funcs } from "./utils/funcs.js";
+import { pushAndParseTemplate } from "./core/htmlParser.js";
 
 {
   /**
@@ -50,4 +51,7 @@ import { funcs } from "./utils/funcs.js";
   window.$.createElementFromString = HTMLControl.createElementFromString;
   window.$.transport = HTMLControl.tranport;
   window.$.utils = funcs;
+
+  // V2 Test
+  window.$.v2 = pushAndParseTemplate;
 }

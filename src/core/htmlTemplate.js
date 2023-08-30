@@ -8,7 +8,7 @@
  * GROUP의 최상위는 [TEMPLATE]
  */
 export class HTMLTemplate {
-  constructor(id, templateName) {
+  constructor(id, templateName, elem) {
     // HTML Template ID
     // data-template="TEMPLATE"
     this.id = id;
@@ -16,6 +16,8 @@ export class HTMLTemplate {
     // HTML Template Name
     // data-template-name="TEMPLATE-01"
     this.templateName = templateName;
+
+    this.node = elem;
 
     // ====== TEMPLATE의 하위 GROUP들 ======
     // data-group="GROUP"
@@ -62,7 +64,7 @@ export class HTMLTemplate {
     if (!templateElem.hasChildNodes()) {
       const itemId = templateElem.getAttribute("data-item");
       const itemTemplateName = templateElem.getAttribute("data-template-name");
-      const item = new HTMLTemplate(itemId, itemTemplateName);
+      const item = new HTMLTemplate(itemId, itemTemplateName, templateElem);
 
       this.items.push(item);
       return;
@@ -74,12 +76,12 @@ export class HTMLTemplate {
 
     if (groupId) {
       const groupTemplateName = templateElem.getAttribute("data-template-name");
-      const group = new HTMLTemplate(groupId, groupTemplateName);
+      const group = new HTMLTemplate(groupId, groupTemplateName, templateElem);
 
       this.groups.push(group);
     } else if (listId) {
       const listTemplateName = templateElem.getAttribute("data-template-name");
-      const list = new HTMLTemplate(listId, listTemplateName);
+      const list = new HTMLTemplate(listId, listTemplateName, templateElem);
 
       this.lists.push(list);
     }

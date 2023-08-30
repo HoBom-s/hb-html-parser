@@ -35,7 +35,7 @@ function toTemplate(templateElem) {
   // 최초 Template진입점. 즉 [data-template] 속성이 Root가 된다고 가정
   // 그 밑의 [data-group] [GROUP] 부터는 parseGroup 메소드 안의 classifyTemplate 함수가
   // 재귀 실행 되면서 모든 Node를 탐색하면서 HTMLTemplate Class로 만들어 줄 것이다.
-  const template = new HTMLTemplate(id, templateName);
+  const template = new HTMLTemplate(id, templateName, templateElem);
   template.parse(templateElem);
 
   return template;

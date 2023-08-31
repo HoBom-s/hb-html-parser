@@ -1,5 +1,7 @@
 import fs from "fs";
 
+const DEFAULT_INDENT = 2;
+
 /**
  * HTML을 Parsing한 것들을 Code로 변환시켜 주는 Class 정의
  *    JavaScript코드를 String Array로 묶은 다음 File로 변환
@@ -8,6 +10,8 @@ export class HTMLCodeGenerator {
   constructor() {
     // Code string array
     this.codeLineArray = [];
+
+    this.currentIndentDepth = 0;
   }
 
   /**
@@ -40,5 +44,54 @@ export class HTMLCodeGenerator {
     }
 
     fs.writeFileSync(path, contents);
+  }
+
+  /**
+   * CodeLine 삽입
+   *
+   * @param {string} codeLine
+   * @returns {void}
+   */
+  appendCodeLine(codeLine) {
+    const space = " ";
+
+    // 현재 Code의 Indent만큼 띄어쓰기 삽입
+    const appendedCodeLine =
+      space.repeat(DEFAULT_INDENT * this.currentIndentDepth) + codeLine;
+
+    this.codeLineArray.push(appendedCodeLine);
+  }
+
+  appendWithBracket(first, last, cb) {
+    // { 찍고 Code Indent 삽입
+    this.appendCodeLine(first);
+    this.currentIndentDepth++;
+
+    cb();
+
+    // } 찍고 Code Indent 복구
+    this.currentIndentDepth--;
+    this.appendCodeLine(last);
+  }
+
+  convertTemplateToClass(template) {
+    // class 선언부
+    this.appendCodeLine(`class ${template.templateName}`);
+
+    // class 내부 정의
+    this.appendWithBracket("{", "}", () => {
+      // 생성자 선언
+      this.appendCodeLine(`constructor()`);
+
+      // 생성자 내부 정의
+      this.appendWithBracket("{", "}", () => {
+        // 생성자 내 property 정의
+        this.appendCodeLine(`this.templateId = ${template.id};`);
+        this.appendCodeLine(`this.templateNode = ${template.node};`);
+        this.appendCodeLine(`this.templateGroups = ${template.groups};`);
+        this.appendCodeLine(`this.templateLists = ${template.lists};`);
+        this.appendCodeLine(`this.templateItems = ${template.items};`);
+      });
+    });
   }
 }

@@ -34,7 +34,7 @@ export class HTMLCodeGenerator {
     const contents = this.codeToString();
 
     if (fs.existsSync(path) && fs.readFileSync(path).toString() === contents) {
-      console.log("Same contents");
+      console.log("Already exist or same contents.");
       return;
     }
 

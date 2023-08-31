@@ -1,6 +1,5 @@
 import jsdom from "jsdom";
 import fs from "fs";
-// import { HTMLSelector } from "./htmlSelector.js";
 import { HTMLTemplate } from "./htmlTemplate.js";
 import { HTMLCodeGenerator } from "./htmlCodeGenerator.js";
 
@@ -16,7 +15,6 @@ function pushAndParseTemplate() {
     encoding: "utf8",
   });
   const root = dom.window.document.querySelector("#root");
-  // const root = new HTMLSelector("#root").selector;
 
   const templates = root.querySelectorAll("*[data-template]");
 

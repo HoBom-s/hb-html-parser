@@ -1,5 +1,8 @@
-import { HTMLSelector } from "./htmlSelector.js";
+import jsdom from "jsdom";
+import fs from "fs";
+// import { HTMLSelector } from "./htmlSelector.js";
 import { HTMLTemplate } from "./htmlTemplate.js";
+import { HTMLCodeGenerator } from "./htmlCodeGenerator.js";
 
 /**
  * 사실상 Main함수에서 돌아갈 최초 Entry point
@@ -8,8 +11,12 @@ import { HTMLTemplate } from "./htmlTemplate.js";
  *
  * @returns {HTMLTemplate[]}
  */
-export function pushAndParseTemplate() {
-  const root = new HTMLSelector("#root").selector;
+function pushAndParseTemplate() {
+  const dom = new jsdom.JSDOM(fs.readFileSync("../templates/index.html"), {
+    encoding: "utf8",
+  });
+  const root = dom.window.document.querySelector("#root");
+  // const root = new HTMLSelector("#root").selector;
 
   const templates = root.querySelectorAll("*[data-template]");
 
@@ -39,4 +46,16 @@ function toTemplate(templateElem) {
   template.parse(templateElem);
 
   return template;
+}
+
+export function startWithTemplate() {
+  const templates = pushAndParseTemplate();
+
+  const codeGenerator = new HTMLCodeGenerator();
+
+  for (const template of templates) {
+    codeGenerator.convertTemplateToClass(template);
+  }
+
+  codeGenerator.stringToFile("temp.js");
 }

@@ -33,15 +33,15 @@ export class HTMLCodeGenerator {
   stringToFile(path) {
     const contents = this.codeToString();
 
-    if (fs.existsSync(path)) {
-      console.log("Already exist path");
-      return;
-    }
+    // if (fs.existsSync(path)) {
+    //   console.log("Already exist path");
+    //   return;
+    // }
 
-    if (fs.readFileSync(path).toString() === contents) {
-      console.log("Same contents");
-      return;
-    }
+    // if (fs.readFileSync(path).toString() === contents) {
+    //   console.log("Same contents");
+    //   return;
+    // }
 
     fs.writeFileSync(path, contents, { encoding: "utf8" });
   }

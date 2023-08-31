@@ -74,6 +74,11 @@ export class HTMLCodeGenerator {
     this.appendCodeLine(last);
   }
 
+  /**
+   * HTML에서 정의한 것을 토대로 Class로 변환해주는 함수
+   *
+   * @param {HTMLTemplate} template
+   */
   convertTemplateToClass(template) {
     // class 선언부
     this.appendCodeLine(`class ${template.templateName}`);

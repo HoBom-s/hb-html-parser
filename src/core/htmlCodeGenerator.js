@@ -43,7 +43,7 @@ export class HTMLCodeGenerator {
       return;
     }
 
-    fs.writeFileSync(path, contents);
+    fs.writeFileSync(path, contents, { encoding: "utf8" });
   }
 
   /**
@@ -86,7 +86,7 @@ export class HTMLCodeGenerator {
       // 생성자 내부 정의
       this.appendWithBracket("{", "}", () => {
         // 생성자 내 property 정의
-        this.appendCodeLine(`this.templateId = ${template.id};`);
+        this.appendCodeLine(`this.templateId = '${template.id}';`);
         this.appendCodeLine(`this.templateNode = ${template.node};`);
         this.appendCodeLine(`this.templateGroups = ${template.groups};`);
         this.appendCodeLine(`this.templateLists = ${template.lists};`);

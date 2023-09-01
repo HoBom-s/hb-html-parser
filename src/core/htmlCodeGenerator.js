@@ -75,6 +75,8 @@ export class HTMLCodeGenerator {
    * @param {HTMLTemplate} template
    */
   convertTemplateToClass(template) {
+    const { groups, lists, items } = template;
+
     // class 선언부
     this.appendCodeLine(`class ${template.templateName}`);
 
@@ -87,10 +89,10 @@ export class HTMLCodeGenerator {
       this.appendWithBracket("{", "}", () => {
         // 생성자 내 property 정의
         this.appendCodeLine(`this.templateId = '${template.id}';`);
-        this.appendCodeLine(`this.templateNode = ${template.node};`);
-        this.appendCodeLine(`this.templateGroups = ${template.groups};`);
-        this.appendCodeLine(`this.templateLists = ${template.lists};`);
-        this.appendCodeLine(`this.templateItems = ${template.items};`);
+        this.appendCodeLine(`this.templateName = '${template.templateName}';`);
+        this.appendCodeLine(
+          `this.templateNode = ${template.node.constructor.name};`
+        );
       });
     });
   }

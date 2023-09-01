@@ -77,8 +77,8 @@ export class HTMLCodeGenerator {
   convertTemplateToClass(template) {
     const { groups, lists, items } = template;
 
-    // class 선언부
-    this.appendCodeLine(`class ${template.templateName}`);
+    // [Template] class 선언부
+    this.appendCodeLine(`class ${template.templateName}Parser`);
 
     // class 내부 정의
     this.appendWithBracket("{", "}", () => {
@@ -95,5 +95,62 @@ export class HTMLCodeGenerator {
         );
       });
     });
+
+    this.appendCodeLine("");
+
+    // [Group] class 선언부
+    for (const group of groups) {
+      this.appendCodeLine(`class ${group.templateName}Parser`);
+
+      this.appendWithBracket("{", "}", () => {
+        this.appendCodeLine(`constructor()`);
+
+        this.appendWithBracket("{", "}", () => {
+          this.appendCodeLine(`this.templateId = '${group.id}';`);
+          this.appendCodeLine(`this.templateName = ${group.templateName};`);
+          this.appendCodeLine(
+            `this.templateNode = ${group.node.constructor.name}`
+          );
+        });
+      });
+    }
+
+    this.appendCodeLine("");
+
+    // [List] class 선언부
+    for (const list of lists) {
+      this.appendCodeLine(`class ${list.templateName}Parser`);
+
+      this.appendWithBracket("{", "}", () => {
+        this.appendCodeLine(`constructor()`);
+
+        this.appendWithBracket("{", "}", () => {
+          this.appendCodeLine(`this.templateId = '${list.id}'`);
+          this.appendCodeLine(`this.templateName = ${list.templateName}`);
+          this.appendCodeLine(
+            `this.templateNode = ${list.node.constructor.name}`
+          );
+        });
+      });
+    }
+
+    this.appendCodeLine("");
+
+    // [Item] class 선언부
+    for (const item of items) {
+      this.appendCodeLine(`class ${item.templateName}Parser`);
+
+      this.appendWithBracket("{", "}", () => {
+        this.appendCodeLine(`constructor()`);
+
+        this.appendWithBracket("{", "}", () => {
+          this.appendCodeLine(`this.templateId = '${item.id}'`);
+          this.appendCodeLine(`this.templateName = ${item.templateName}`);
+          this.appendCodeLine(
+            `this.templateNode = ${item.node.constructor.name}`
+          );
+        });
+      });
+    }
   }
 }

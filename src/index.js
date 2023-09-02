@@ -1,11 +1,11 @@
 import jsdom from "jsdom";
 import fs from "fs";
-import { HTMLSelector } from "./core/htmlSelector.js";
-import { HTMLControl } from "./core/htmlControl.js";
-import { funcs } from "./utils/funcs.js";
-import { startWithTemplate } from "./core/htmlParser.js";
+import { HTMLSelector } from "./core/htmlSelector";
+import { HTMLControl } from "./core/htmlControl";
+import { funcs } from "./utils/funcs";
+import { startWithTemplate } from "./core/htmlParser";
 
-const dom = new jsdom.JSDOM(fs.readFileSync("../templates/index.html"), {
+const dom = new jsdom.JSDOM(fs.readFileSync("./templates/index.html"), {
   encoding: "utf8",
 });
 

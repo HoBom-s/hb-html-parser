@@ -1,7 +1,7 @@
 import jsdom from "jsdom";
 import fs from "fs";
-import { HTMLTemplate } from "./htmlTemplate.js";
-import { HTMLCodeGenerator } from "./htmlCodeGenerator.js";
+import { HTMLTemplate } from "./htmlTemplate";
+import { HTMLCodeGenerator } from "./htmlCodeGenerator";
 
 /**
  * 사실상 Main함수에서 돌아갈 최초 Entry point
@@ -11,7 +11,7 @@ import { HTMLCodeGenerator } from "./htmlCodeGenerator.js";
  * @returns {HTMLTemplate[]}
  */
 function pushAndParseTemplate() {
-  const dom = new jsdom.JSDOM(fs.readFileSync("../templates/index.html"), {
+  const dom = new jsdom.JSDOM(fs.readFileSync("./templates/index.html"), {
     encoding: "utf8",
   });
   const root = dom.window.document.querySelector("#root");

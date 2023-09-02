@@ -107,7 +107,7 @@ export class HTMLCodeGenerator {
 
         this.appendWithBracket("{", "}", () => {
           this.appendCodeLine(`this.templateId = '${group.id}';`);
-          this.appendCodeLine(`this.templateName = ${group.templateName};`);
+          this.appendCodeLine(`this.templateName = '${group.templateName}';`);
           this.appendCodeLine(
             `this.templateNode = ${group.node.constructor.name}`
           );
@@ -125,8 +125,8 @@ export class HTMLCodeGenerator {
         this.appendCodeLine(`constructor()`);
 
         this.appendWithBracket("{", "}", () => {
-          this.appendCodeLine(`this.templateId = '${list.id}'`);
-          this.appendCodeLine(`this.templateName = ${list.templateName}`);
+          this.appendCodeLine(`this.templateId = '${list.id}';`);
+          this.appendCodeLine(`this.templateName = '${list.templateName}';`);
           this.appendCodeLine(
             `this.templateNode = ${list.node.constructor.name}`
           );
@@ -144,8 +144,8 @@ export class HTMLCodeGenerator {
         this.appendCodeLine(`constructor()`);
 
         this.appendWithBracket("{", "}", () => {
-          this.appendCodeLine(`this.templateId = '${item.id}'`);
-          this.appendCodeLine(`this.templateName = ${item.templateName}`);
+          this.appendCodeLine(`this.templateId = '${item.id}';`);
+          this.appendCodeLine(`this.templateName = '${item.templateName}';`);
           this.appendCodeLine(
             `this.templateNode = ${item.node.constructor.name}`
           );

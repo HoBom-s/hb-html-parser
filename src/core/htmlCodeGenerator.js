@@ -77,8 +77,17 @@ export class HTMLCodeGenerator {
   convertTemplateToClass(template) {
     const { groups, lists, items } = template;
 
+    // import 구문
+    this.appendCodeLine(
+      "import { HoBomHTMLParserBase } from '../../src/core/hobomHtmlParserBase.js';"
+    );
+
+    this.appendCodeLine("");
+
     // [Template] class 선언부
-    this.appendCodeLine(`class ${template.templateName}Parser`);
+    this.appendCodeLine(
+      `export class ${template.templateName}Parser extends HoBomHTMLParserBase`
+    );
 
     // class 내부 정의
     this.appendWithBracket("{", "}", () => {
@@ -88,10 +97,14 @@ export class HTMLCodeGenerator {
       // 생성자 내부 정의
       this.appendWithBracket("{", "}", () => {
         // 생성자 내 property 정의
+        this.appendCodeLine("super();");
+
+        this.appendCodeLine("");
+
         this.appendCodeLine(`this.templateId = '${template.id}';`);
         this.appendCodeLine(`this.templateName = '${template.templateName}';`);
         this.appendCodeLine(
-          `this.templateNode = ${template.node.constructor.name};`
+          `this.templateNode = this.matchNode('${template.templateName}');`
         );
       });
     });
@@ -100,16 +113,22 @@ export class HTMLCodeGenerator {
 
     // [Group] class 선언부
     for (const group of groups) {
-      this.appendCodeLine(`class ${group.templateName}Parser`);
+      this.appendCodeLine(
+        `export class ${group.templateName}Parser extends HoBomHTMLParserBase`
+      );
 
       this.appendWithBracket("{", "}", () => {
         this.appendCodeLine(`constructor()`);
 
         this.appendWithBracket("{", "}", () => {
+          this.appendCodeLine("super();");
+
+          this.appendCodeLine("");
+
           this.appendCodeLine(`this.templateId = '${group.id}';`);
           this.appendCodeLine(`this.templateName = '${group.templateName}';`);
           this.appendCodeLine(
-            `this.templateNode = ${group.node.constructor.name}`
+            `this.templateNode = this.matchNode('${group.templateName}');`
           );
         });
       });
@@ -119,16 +138,22 @@ export class HTMLCodeGenerator {
 
     // [List] class 선언부
     for (const list of lists) {
-      this.appendCodeLine(`class ${list.templateName}Parser`);
+      this.appendCodeLine(
+        `export class ${list.templateName}Parser extends HoBomHTMLParserBase`
+      );
 
       this.appendWithBracket("{", "}", () => {
         this.appendCodeLine(`constructor()`);
 
         this.appendWithBracket("{", "}", () => {
+          this.appendCodeLine("super();");
+
+          this.appendCodeLine("");
+
           this.appendCodeLine(`this.templateId = '${list.id}';`);
           this.appendCodeLine(`this.templateName = '${list.templateName}';`);
           this.appendCodeLine(
-            `this.templateNode = ${list.node.constructor.name}`
+            `this.templateNode = this.matchNode('${list.templateName}');`
           );
         });
       });
@@ -138,16 +163,22 @@ export class HTMLCodeGenerator {
 
     // [Item] class 선언부
     for (const item of items) {
-      this.appendCodeLine(`class ${item.templateName}Parser`);
+      this.appendCodeLine(
+        `export class ${item.templateName}Parser extends HoBomHTMLParserBase`
+      );
 
       this.appendWithBracket("{", "}", () => {
         this.appendCodeLine(`constructor()`);
 
         this.appendWithBracket("{", "}", () => {
+          this.appendCodeLine("super();");
+
+          this.appendCodeLine("");
+
           this.appendCodeLine(`this.templateId = '${item.id}';`);
           this.appendCodeLine(`this.templateName = '${item.templateName}';`);
           this.appendCodeLine(
-            `this.templateNode = ${item.node.constructor.name}`
+            `this.templateNode = this.matchNode('${item.templateName}');`
           );
         });
       });

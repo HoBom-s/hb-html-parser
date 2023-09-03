@@ -10,8 +10,8 @@ import { HTMLCodeGenerator } from "./htmlCodeGenerator";
  *
  * @returns {HTMLTemplate[]}
  */
-function pushAndParseTemplate() {
-  const dom = new jsdom.JSDOM(fs.readFileSync("./templates/index.html"), {
+function pushAndParseTemplate(file) {
+  const dom = new jsdom.JSDOM(fs.readFileSync(`./templates/${file}`), {
     encoding: "utf8",
   });
   const root = dom.window.document.querySelector("#root");
@@ -47,15 +47,29 @@ function toTemplate(templateElem) {
 }
 
 export function startWithTemplate() {
-  const templates = pushAndParseTemplate();
+  const htmlFileArray = [];
 
-  const codeGenerator = new HTMLCodeGenerator();
+  const files = fs.readdirSync("./templates");
 
-  for (const template of templates) {
-    codeGenerator.convertTemplateToClass(template);
+  for (const file of files) {
+    const format = file.split(".")[1];
+
+    if (format === "html") {
+      htmlFileArray.push(file);
+    }
   }
 
-  codeGenerator.stringToFile(
-    `./templates/class/${templates[0].templateName}.js`
-  );
+  for (const file of htmlFileArray) {
+    const templates = pushAndParseTemplate(file);
+
+    const codeGenerator = new HTMLCodeGenerator();
+
+    for (const template of templates) {
+      codeGenerator.convertTemplateToClass(template);
+    }
+
+    codeGenerator.stringToFile(
+      `./templates/class/${templates[0].templateName}.js`
+    );
+  }
 }

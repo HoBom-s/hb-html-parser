@@ -55,5 +55,7 @@ export function startWithTemplate() {
     codeGenerator.convertTemplateToClass(template);
   }
 
-  codeGenerator.stringToFile("temp.js");
+  codeGenerator.stringToFile(
+    `./templates/class/${templates[0].templateName}.js`
+  );
 }

@@ -53,4 +53,24 @@ export class HoBomHTMLParserBase {
     // DOM Binding - V1에서처럼 사용하기 위해서,,,
     bindDOM();
   }
+
+  /**
+   * TemplateName과 Matching이 되는 DOMElement 반환
+   *
+   * @param {string} templateName
+   * @returns {DOMElement | null}
+   */
+  matchNode(templateName) {
+    const templates = this.$$("*[data-template-name]");
+
+    for (const template of templates) {
+      const tName = template.getAttribute("data-template-name");
+
+      if (tName === templateName) {
+        return template;
+      }
+    }
+
+    return null;
+  }
 }

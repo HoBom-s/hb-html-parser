@@ -182,6 +182,8 @@ export class HTMLCodeGenerator {
           );
         });
       });
+
+      this.appendCodeLine("");
     }
   }
 }

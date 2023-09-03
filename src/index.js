@@ -42,7 +42,7 @@ const dom = new jsdom.JSDOM(fs.readFileSync("./templates/index.html"), {
    * Selector 정의
    *      $("") < 이렇게 사용
    */
-  dom.window.window.$ = function (q) {
+  dom.window.$ = function (q) {
     return new HTMLSelector(q).selector;
   };
 }

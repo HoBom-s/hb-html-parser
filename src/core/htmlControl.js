@@ -1,4 +1,4 @@
-import { HTMLSelector } from "./htmlSelector";
+import { HTMLSelector } from "./htmlSelector.js";
 
 /**
  * HTML Contoller 정의

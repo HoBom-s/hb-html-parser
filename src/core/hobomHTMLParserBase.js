@@ -52,6 +52,8 @@ export class HoBomHTMLParserBase {
 
     // DOM Binding - V1에서처럼 사용하기 위해서,,,
     bindDOM();
+
+    this.childrenParsers = [];
   }
 
   /**
@@ -74,9 +76,16 @@ export class HoBomHTMLParserBase {
     return null;
   }
 
+  /**
+   * HoBomHTMLParserBase 추가
+   *
+   * @param {HoBomHTMLParserBase} childParsers
+   */
   initialize(childParsers) {
     for (const childrenParser of childParsers) {
-      new childrenParser();
+      const children = new childrenParser();
+
+      this.childrenParsers.push(children);
     }
   }
 }

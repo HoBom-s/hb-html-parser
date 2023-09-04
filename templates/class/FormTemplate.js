@@ -7,6 +7,13 @@ export class FormTemplateParser extends HoBomHTMLParserBase {
     this.templateId = "TEMPLATE";
     this.templateName = "FormTemplate";
     this.templateNode = this.matchNode("FormTemplate");
+
+    this.initialize([
+      FormGroupParser,
+      InputListParser,
+      InputUserNameItemParser,
+      InputUserPasswordItemParser,
+    ]);
   }
 }
 

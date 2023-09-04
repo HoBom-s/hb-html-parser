@@ -73,4 +73,10 @@ export class HoBomHTMLParserBase {
 
     return null;
   }
+
+  initialize(childParsers) {
+    for (const childrenParser of childParsers) {
+      new childrenParser();
+    }
+  }
 }

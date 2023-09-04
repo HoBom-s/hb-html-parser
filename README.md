@@ -152,6 +152,39 @@ export class InputUserNameItemParser extends HoBomHTMLParserBase {
 
 <br />
 
+### 3. Template Initialize
+
+class 파일이 생성된 것을 확인한 후 templates 디렉토리의 main.js에 **TemplateParser** 초기화 작업 수행.
+
+이후 class 디렉토리의 **TemplateParser** 에서 initialize 수행.
+
+```js
+// main.js
+import { FormTemplateParser } from "./class/FormTemplate.js";
+
+new FormTemplateParser();
+
+// FormTemplate.js
+export class FormTemplateParser extends HoBomHTMLParserBase {
+  constructor() {
+    super();
+
+    this.templateId = "TEMPLATE";
+    this.templateName = "FormTemplate";
+    this.templateNode = this.matchNode("FormTemplate");
+
+    this.initialize([
+      FormGroupParser,
+      InputListParser,
+      InputUserNameItemParser,
+      InputUserPasswordItemParser,
+    ]);
+  }
+}
+```
+
+<br />
+
 ---
 
 ## HoBom HTML Parser V1

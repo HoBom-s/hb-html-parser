@@ -5,37 +5,81 @@
 
     <title>Template</title>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script defer type="module" src="main.js"></script>
   </head>
   <body>
-    <!-- For V2 Test -->
+    <!-- For V2 Template -->
     <div id="root">
-      <div data-template="TEMPLATE" data-template-name="FormTemplate">
-        <form id="form-group" data-group="GROUP" data-template-name="FormGroup">
-          <div data-list="LIST" data-template-name="InputList">
-            <input
-              type="text"
-              name="username"
-              data-item="ITEM"
-              data-template-name="InputUserNameItem"
-            />
-            <input
-              type="password"
-              name="password"
-              data-item="ITEM"
-              data-template-name="InputUserPasswordItem"
-            />
+      <nav
+        data-template="TEMPLATE"
+        data-template-name="HeaderSectionTemplate"
+        class="hb-header"
+      >
+        <div
+          data-group="GROUP"
+          data-template-name="HeaderSectionGroup"
+          class="hb-header-container"
+        >
+          <a class="hb-logo-text">HoBom Service</a>
+          <div class="hb-item-list">
+            <span><a>About</a></span>
+            <span><a>Services</a></span>
+            <span><a>Contact</a></span>
           </div>
-        </form>
-      </div>
+        </div>
+      </nav>
+      <header
+        data-template="TEMPLATE"
+        data-template-name="HeaderMainTemplate"
+        class="hb-main-header-section"
+      >
+        <div data-group="GROUP" data-template-name="HeaderMainGroup">
+          <div
+            data-list="LIST"
+            data-template-name="HeaderMainTextList"
+            class="text-center"
+          >
+            <h1>Welcome to HoBom Service</h1>
+            <p>We share the technology and know-how of HoBom service.</p>
+            <a data-item="ITEM" data-template-name="HeaderMainButtonItem"
+              >Browse our servie !</a
+            >
+          </div>
+        </div>
+      </header>
+      <section class="hb-main-article-section">
+        <div class="hb-article-section">
+          <h2>About this page</h2>
+          <p>
+            This is a perfect place to talk about our technology. This page is
+            made by our framework <strong>HoBom HTML Parser</strong>. This
+            template is purposefully literaly <strong>TEMPLATE</strong>. So you
+            can read the DOCS for our framework.
+          </p>
+        </div>
+      </section>
+      <section class="hb-main-article-light-section">
+        <div class="hb-article-section">
+          <h2>HoBom HTML Parser</h2>
+          <p>
+            Introducing the <strong>HoBom HTML Parser</strong> framework. This
+            is suitable for small project.
+          </p>
+        </div>
+      </section>
+      <section class="hb-main-article-section">
+        <div class="hb-article-section">
+          <h2>Contact</h2>
+          <p>Ethan: foxmon1524@gmail.com<br />Robin: robin.yeon@gamil.com</p>
+        </div>
+      </section>
+      <footer class="hb-footer">
+        <div class="hb-footer-container">
+          <p>© 2023. HoBom all rights reserved.</p>
+        </div>
+      </footer>
     </div>
-    <!-- @@@@ V2 @@@@ -->
+    <!-- @@@@ V2 Template @@@@ -->
   </body>
 </html>

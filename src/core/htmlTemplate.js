@@ -74,6 +74,7 @@ export class HTMLTemplate {
     // 자식노드가 있다면 [GROUP] or [LIST]일 것으로 예상
     const groupId = templateElem.getAttribute("data-group");
     const listId = templateElem.getAttribute("data-list");
+    const itemId = templateElem.getAttribute("data-item");
 
     if (groupId) {
       const groupTemplateName = templateElem.getAttribute("data-template-name");
@@ -85,6 +86,11 @@ export class HTMLTemplate {
       const list = new HTMLTemplate(listId, listTemplateName, templateElem);
 
       this.lists.push(list);
+    } else if (itemId) {
+      const itemTemplateName = templateElem.getAttribute("data-template-name");
+      const item = new HTMLTemplate(itemId, itemTemplateName, templateElem);
+
+      this.items.push(item);
     }
 
     for (const childNode of templateElem.children) {

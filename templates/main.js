@@ -1,3 +1,7 @@
-import { FormTemplateParser } from "./class/FormTemplate.js";
+import {
+  HeaderSectionTemplateParser,
+  HeaderMainTemplateParser,
+} from "./class/HeaderSectionTemplate.js";
 
-new FormTemplateParser();
+new HeaderSectionTemplateParser();
+new HeaderMainTemplateParser();

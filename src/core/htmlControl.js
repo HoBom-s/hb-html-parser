@@ -71,6 +71,7 @@ const HTMLControl = {};
    * @example
    * {
    *    methods: "",
+   *    async: true, // 비동기 => true, 동기 => false
    *    success: () => {},
    *    error: () => {},
    * }
@@ -113,7 +114,7 @@ const HTMLControl = {};
       }
     };
 
-    transporter.open(methods[options.methods], url);
+    transporter.open(methods[options.methods], url, options.async);
     transporter.setRequestHeader("Content-Type", options["Content-Type"]);
     transporter.send(JSON.stringify(options.body));
   };

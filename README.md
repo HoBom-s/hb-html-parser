@@ -8,9 +8,23 @@
 
 <br />
 
-사용 방법이 어렵지 않기 때문에 **template**폴더의 **index.html** 예시를 본다면 쉽게 사용할 수 있을 것이라고 예상.
+사용 방법이 어렵지 않기 때문에 **templates**폴더의 **index.html** 예시를 본다면 쉽게 사용할 수 있을 것이라고 예상.
 
 기본적인 템플릿은 **templates** 폴더의 **index.html** 확인
+
+<br />
+
+---
+
+<br />
+
+### 설명
+
+> HoBom HTML Parser는 HTML의 파일을 Parsing하여 JavaScript Class를 생성해 줌
+>
+> Parsing된 JavaScript Class로 DOMElement를 제어할 수 있음
+>
+> 즉 하나의 HTML파일에 JavaScript 파일 하나가 매칭
 
 <br />
 
@@ -41,7 +55,7 @@ Framework라고 이름을 지은 만큼 명확한 규칙이 있음. 아마 이 �
 ```
 1. HTML을 아래의 규칙에 맞춰 작성후 [npm start]
 
-2. templates 밑에 class 디렉토리에 빌드 된 파일 확인
+2. templates 밑에 class 디렉토리에 생성된 파일 확인
 
 3. main.js에서 생성된 class를 인스턴스화
   - new FormGroup();

@@ -33,7 +33,7 @@
           <div class="text-center">
             <h1>Welcome to HoBom Shop</h1>
             <p>We share the technology and know-how of HoBom shop.</p>
-            <a data-item="ITEM">Browse our shop !</a>
+            <a data-item="ITEM" href="#product">Browse our shop !</a>
           </div>
         </div>
       </header>
@@ -55,8 +55,12 @@
       >
         <div data-group="GROUP" data-template-name="ProductSectionGroup">
           <div class="hb-article-section">
-            <h2>Products</h2>
-            <div data-list="LIST" data-template-name="ProductSectionList"></div>
+            <h2 id="product">Products</h2>
+            <div
+              class="hb-product-list"
+              data-list="LIST"
+              data-template-name="ProductSectionList"
+            ></div>
           </div>
         </div>
       </section>

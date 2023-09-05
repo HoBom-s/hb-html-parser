@@ -12,29 +12,60 @@
       }
     </style>
 
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
     <script defer type="module" src="main.js"></script>
   </head>
   <body>
     <!-- For V2 Test -->
     <div id="root">
-      <div data-template="TEMPLATE" data-template-name="FormTemplate">
-        <form id="form-group" data-group="GROUP" data-template-name="FormGroup">
-          <div data-list="LIST" data-template-name="InputList">
-            <input
-              type="text"
-              name="username"
-              data-item="ITEM"
-              data-template-name="InputUserNameItem"
-            />
-            <input
-              type="password"
-              name="password"
-              data-item="ITEM"
-              data-template-name="InputUserPasswordItem"
-            />
+      <nav class="hb-header">
+        <div class="hb-header-container">
+          <a class="hb-logo-text">HoBom Shop</a>
+          <div class="hb-item-list">
+            <span><a>Proudcts</a></span>
           </div>
-        </form>
-      </div>
+        </div>
+      </nav>
+
+      <header class="hb-main-header-section">
+        <div>
+          <div class="text-center">
+            <h1>Welcome to HoBom Shop</h1>
+            <p>We share the technology and know-how of HoBom shop.</p>
+            <a data-item="ITEM">Browse our shop !</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="hb-main-article-light-section">
+        <div class="hb-article-section">
+          <h2>HoBom Shop</h2>
+          <p>
+            Introducing the <strong>HoBom Small Shop</strong>. This page is just
+            small shop page template. More easy than Vanilla JavaScript page.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="hb-main-article-section"
+        data-template="TEMPLATE"
+        data-template-name="ProductSectionTemplate"
+      >
+        <div data-group="GROUP" data-template-name="ProductSectionGroup">
+          <div class="hb-article-section">
+            <h2>Products</h2>
+            <div data-list="LIST" data-template-name="ProductSectionList"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="hb-footer">
+        <div class="hb-footer-container">
+          <p>© 2023. HoBom all rights reserved.</p>
+        </div>
+      </footer>
     </div>
     <!-- @@@@ V2 @@@@ -->
   </body>

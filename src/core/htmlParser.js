@@ -3,6 +3,8 @@ import fs from "fs";
 import { HTMLTemplate } from "./htmlTemplate";
 import { HTMLCodeGenerator } from "./htmlCodeGenerator";
 
+const PARSE_FILE_FORMAT = "html";
+
 /**
  * 사실상 Main함수에서 돌아갈 최초 Entry point
  *      모든 HTML 속성을 HTMLTemplate Class로 Parsing을 진행한 후
@@ -54,7 +56,7 @@ export function startWithTemplate() {
   for (const file of files) {
     const format = file.split(".")[1];
 
-    if (format === "html") {
+    if (format === PARSE_FILE_FORMAT) {
       htmlFileArray.push(file);
     }
   }

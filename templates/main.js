@@ -1,3 +1,9 @@
-import { FormTemplateParser } from "./class/FormTemplate.js";
+import {
+    ProductSectionTemplateParser,
+    ProductSectionGroupParser,
+    ProductSectionListParser,
+} from "./class/ProductSectionTemplate.js";
 
-new FormTemplateParser();
+new ProductSectionTemplateParser();
+new ProductSectionGroupParser();
+new ProductSectionListParser();

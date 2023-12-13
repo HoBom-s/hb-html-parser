@@ -65,45 +65,45 @@ Framework라고 이름을 지은 만큼 명확한 규칙이 있음. 아마 이 �
 
 아래의 규칙에 따라서 HTML을 작성하도록 함
 
-- **templates** 디렉토리에서 HTML 파일 작성
-  - id="root" 이 기준
-  - 각각의 data-template-name 은 고유해야 함
-- data-template
-  - Template의 시작 지점
-  - TEMPLATE은 반드시 TEMPLATE 이어야 함 (data-template="TEMPLATE")
-- data-group
-  - data-template 밑에 Group
-  - GROUP은 반드시 GROUP이어야 함 (data-group="GROUP")
-- data-list
-  - data-group 밑에 List
-  - LIST는 반드시 LIST이어야 함 (data-list="LIST")
-- data-item
+-   **templates** 디렉토리에서 HTML 파일 작성
+    -   id="root" 이 기준
+    -   각각의 data-template-name 은 고유해야 함
+-   data-template
+    -   Template의 시작 지점
+    -   TEMPLATE은 반드시 TEMPLATE 이어야 함 (data-template="TEMPLATE")
+-   data-group
+    -   data-template 밑에 Group
+    -   GROUP은 반드시 GROUP이어야 함 (data-group="GROUP")
+-   data-list
+    -   data-group 밑에 List
+    -   LIST는 반드시 LIST이어야 함 (data-list="LIST")
+-   data-item
 
-  - data-list 밑에 Item
-  - ITEM은 반드시 ITEM이어야 함 (data-item="ITEM")
+    -   data-list 밑에 Item
+    -   ITEM은 반드시 ITEM이어야 함 (data-item="ITEM")
 
 사용 예시는 아래와 같음.
 
 ```html
 <div id="root">
-  <div data-template="TEMPLATE" data-template-name="FormTemplate">
-    <form id="form-group" data-group="GROUP" data-template-name="FormGroup">
-      <div data-list="LIST" data-template-name="InputList">
-        <input
-          type="text"
-          name="username"
-          data-item="ITEM"
-          data-template-name="InputUserNameItem"
-        />
-        <input
-          type="password"
-          name="password"
-          data-item="ITEM"
-          data-template-name="InputUserPasswordItem"
-        />
-      </div>
-    </form>
-  </div>
+    <div data-template="TEMPLATE" data-template-name="FormTemplate">
+        <form id="form-group" data-group="GROUP" data-template-name="FormGroup">
+            <div data-list="LIST" data-template-name="InputList">
+                <input
+                    type="text"
+                    name="username"
+                    data-item="ITEM"
+                    data-template-name="InputUserNameItem"
+                />
+                <input
+                    type="password"
+                    name="password"
+                    data-item="ITEM"
+                    data-template-name="InputUserPasswordItem"
+                />
+            </div>
+        </form>
+    </div>
 </div>
 ```
 
@@ -121,20 +121,20 @@ Framework라고 이름을 지은 만큼 명확한 규칙이 있음. 아마 이 �
 
 ```js
 export class InputUserNameItemParser extends HoBomHTMLParserBase {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.templateId = "ITEM";
-    this.templateName = "InputUserNameItem";
-    this.templateNode = this.matchNode("InputUserNameItem");
+        this.templateId = "ITEM";
+        this.templateName = "InputUserNameItem";
+        this.templateNode = this.matchNode("InputUserNameItem");
 
-    // Change Event
-    this.templateNode.on("change", (e) => {
-      const { value } = e.target;
+        // Change Event
+        this.templateNode.on("change", (e) => {
+            const { value } = e.target;
 
-      console.log(value);
-    });
-  }
+            console.log(value);
+        });
+    }
 }
 ```
 
@@ -144,23 +144,23 @@ export class InputUserNameItemParser extends HoBomHTMLParserBase {
 
 ```js
 export class InputUserNameItemParser extends HoBomHTMLParserBase {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.templateId = "ITEM";
-    this.templateName = "InputUserNameItem";
-    this.templateNode = this.matchNode("InputUserNameItem");
+        this.templateId = "ITEM";
+        this.templateName = "InputUserNameItem";
+        this.templateNode = this.matchNode("InputUserNameItem");
 
-    this.$.transport("/api/url", {
-      methods: "GET",
-      success: function (data) {
-        // ...success
-      },
-      error: function (error) {
-        // ...fail
-      },
-    });
-  }
+        this.$.transport("/api/url", {
+            methods: "GET",
+            success: function (data) {
+                // ...success
+            },
+            error: function (error) {
+                // ...fail
+            },
+        });
+    }
 }
 ```
 
@@ -180,20 +180,20 @@ new FormTemplateParser();
 
 // FormTemplate.js
 export class FormTemplateParser extends HoBomHTMLParserBase {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.templateId = "TEMPLATE";
-    this.templateName = "FormTemplate";
-    this.templateNode = this.matchNode("FormTemplate");
+        this.templateId = "TEMPLATE";
+        this.templateName = "FormTemplate";
+        this.templateNode = this.matchNode("FormTemplate");
 
-    this.initialize([
-      FormGroupParser,
-      InputListParser,
-      InputUserNameItemParser,
-      InputUserPasswordItemParser,
-    ]);
-  }
+        this.initialize([
+            FormGroupParser,
+            InputListParser,
+            InputUserNameItemParser,
+            InputUserPasswordItemParser,
+        ]);
+    }
 }
 ```
 
@@ -219,7 +219,7 @@ $("#temp2");
 <button class="temp-btn">button</button>;
 
 $(".temp-btn").on("click", () => {
-  alert("hi");
+    alert("hi");
 });
 ```
 
@@ -243,27 +243,42 @@ $.createElementFromString(divElem, `<input />`);
 
 ### 4. API 통신
 
+[DEPRECATED]
 jQuery의 **ajax**처럼 구현 했음. 그러나 기존의 jQuery의 경우 굳이 사용하지 않는 불필요한 Option이 너무 많았기 때문에 필요한 것만 경량화 하여 구현.
 
 지원되지 않는 브라우저를 고려하여 **XMLHttpRequest**를 사용하여 구현 했음.
 
+[NEW]
+**axios** 모듈처럼 활용 가능.
+
 ```javascript
 // transport Method 활용
+// [deprecated]
+// $.transport("https://fakestoreapi.com/products", {
+//   methods: "GET",
+//   success: function (data) {
+//     const elem = $.create("div");
+//     data.forEach((v) => {
+//       const elem = $.create("div");
+//       $.createElementFromString(elem, `<span>${v.title}</span>`);
+//       $(".root").append(elem);
+//     });
+//   },
+//   error: function (error) {
+//     console.log(error);
+//   },
+// });
 
-$.transport("https://fakestoreapi.com/products", {
-  methods: "GET",
-  success: function (data) {
-    const elem = $.create("div");
-    data.forEach((v) => {
-      const elem = $.create("div");
-      $.createElementFromString(elem, `<span>${v.title}</span>`);
-      $(".root").append(elem);
-    });
-  },
-  error: function (error) {
-    console.log(error);
-  },
-});
+const { get } = $.http(
+    "/api/baseUrl",
+    {
+        "Content-Type": "application/json",
+        Authorization: "Bearer [TOKEN]",
+    },
+    3000,
+);
+
+get("/url").then((data) => console.log(data));
 ```
 
 ### 5. Function Util
@@ -278,8 +293,8 @@ $.utils.each([1, 2, 3, 4], (item, idx) => console.log(item, idx));
 
 // Object
 const obj = {
-  A: "a",
-  B: "b",
+    A: "a",
+    B: "b",
 };
 $.utils.each(obj, (key, value) => console.log(key, value));
 ```
